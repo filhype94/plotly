@@ -1,0 +1,21 @@
+---
+title: "R Markdown Presentation & Plotly"
+output: html_document
+---
+
+```{r echo=FALSE}
+
+library(plotly)
+
+d <- diamonds[sample(nrow(diamonds), 1000), ]
+
+fig <- plot_ly(
+  d, x = ~carat, y = ~price,
+  # Hover text:
+  text = ~paste("Price: ", price, '$<br>Cut:', cut),
+  color = ~carat, size = ~carat
+)
+
+fig
+
+```
